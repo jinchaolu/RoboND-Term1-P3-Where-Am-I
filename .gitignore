@@ -14,3 +14,7 @@
 # Metadata
 *.aliases
 *.lvlps
+
+# Folders
+catkin_ws/build/
+catkin_ws/devel/
