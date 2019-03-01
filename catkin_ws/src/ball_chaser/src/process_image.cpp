@@ -63,13 +63,15 @@ void process_image_callback(const sensor_msgs::Image img)
     
     unsigned int left_range  = (unsigned int)((float)step / 3.0 + 1);
     unsigned int right_range = (unsigned int)((float)step / 3.0 + 1);
-    
+
+/*    
     unsigned int idx_left_start    = 0;
     unsigned int idx_left_end      = left_range;
     unsigned int idx_forward_start = left_range + 1;
     unsigned int idx_forward_end   = step - right_range - 1;
     unsigned int idx_right_start   = step - right_range;
     unsigned int idx_right_end     = step - 1;
+*/
     
     float x = 0.0;
     float z = 0.0;
@@ -88,11 +90,13 @@ void process_image_callback(const sensor_msgs::Image img)
 		}
     }
 
+/*
     // Sum up the counter in different range
     unsigned long init = 0;
     cout_left    = accumulate(vec_cout + idx_left_start,    vec_cout + idx_left_end,    init);
     cout_forward = accumulate(vec_cout + idx_forward_start, vec_cout + idx_forward_end, init);
     cout_right   = accumulate(vec_cout + idx_right_start,   vec_cout + idx_right_end,   init);
+*/
 
     // Base on the result, determine the action
     // If there is no pixel, then tell the car to stop
@@ -101,8 +105,8 @@ void process_image_callback(const sensor_msgs::Image img)
         z = 0.0;
 	}
 	else {
-        x = 0.0;
-        z = 0.0;
+        x = 0.1;
+        z = -0.5;
 	}
     
     // Send request to service
