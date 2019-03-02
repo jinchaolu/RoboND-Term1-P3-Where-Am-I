@@ -98,15 +98,33 @@ void process_image_callback(const sensor_msgs::Image img)
     cout_right   = accumulate(vec_cout + idx_right_start,   vec_cout + idx_right_end,   init);
 */
 
+    // Sum up the white pixel counter vector
+    int sum = 0;
+    sum = accumulate(vec_cout, vec_cout + step, 0);
+
+    // Find the index of first maximum value in the vector
+    unsigned int idx_first_max = distance(vec_cout, max_element(vec_cout, vec_cout + step));
+    // Find the index of last maximum value in the vector
+    unsigned int idx_last_max = step + distance(max_element(vec_cout, vec_cout + step), vec_cout);
+    // Calculate the center index with first and last maximum value in the vector
+    // This will be the estimated center of the white ball
+    unsigned int idx_center_ball = (idx_first_max + idx_last_max) / 2.0 + 1;
+  
     // Base on the result, determine the action
     // If there is no pixel, then tell the car to stop
-    if (cout_left == 0 && cout_forward == 0 && cout_right == 0) {
+    if (sum == 0) {
         x = 0.0;
         z = 0.0;
 	}
 	else {
         x = 0.1;
-        z = -0.5;
+        z = 0.5 * (step / 2.0 - idx_center_ball);
+
+        cout << "idx_first_max = " << idx_first_max << endl;
+        cout << "idx_last_max = " << idx_last_max << endl;
+        cout << "idx_center_ball = " << idx_center_ball << endl;
+        cout << "step = " << step << endl;
+        cout << "z = " << z << endl;
 	}
     
     // Send request to service
