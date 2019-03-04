@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- send urdf to param server -->
+  <param name="gokart_description" command="$(find xacro)/xacro --inorder '$(find my_gokart)/urdf/my_gokart.xacro'" />
+
+</launch>
