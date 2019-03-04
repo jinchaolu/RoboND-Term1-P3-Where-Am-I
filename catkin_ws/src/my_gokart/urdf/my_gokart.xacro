@@ -14,7 +14,7 @@
     <pose>0 0 0.1 0 0 0</pose>
 
     <inertial>
-      <mass value="15.0"/>
+      <mass value="30.0"/>
       <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
       <inertia
           ixx="0.1" ixy="0" ixz="0"
@@ -38,19 +38,89 @@
     </visual>
 
     <collision name='front_left_caster_collision'>
-      <origin xyz="1.9 .4 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="0.9 .35 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.0499"/>
       </geometry>
     </collision>
 
     <visual name='front_left_caster_visual'>
-      <origin xyz="1.9 .4 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="0.9 .35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </visual>
+    
+    <collision name='front_right_caster_collision'>
+      <origin xyz="0.9 -0.35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.0499"/>
+      </geometry>
+    </collision>
+
+    <visual name='front_right_caster_visual'>
+      <origin xyz="0.9 -0.35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </visual>
+    
+    <collision name='center_left_caster_collision'>
+      <origin xyz="0 0.35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.0499"/>
+      </geometry>
+    </collision>
+
+    <visual name='center_left_caster_visual'>
+      <origin xyz="0 0.35 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
     </visual>
 
+    <collision name='center_right_caster_collision'>
+      <origin xyz="0 -0.35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.0499"/>
+      </geometry>
+    </collision>
+
+    <visual name='center_right_caster_visual'>
+      <origin xyz="0 -0.35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </visual>
+    
+    <collision name='rear_left_caster_collision'>
+      <origin xyz="-0.9 0.35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.0499"/>
+      </geometry>
+    </collision>
+
+    <visual name='rear_left_caster_visual'>
+      <origin xyz="-0.9 0.35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </visual>
+    
+    <collision name='rear_right_caster_collision'>
+      <origin xyz="-0.9 -0.35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.0499"/>
+      </geometry>
+    </collision>
+
+    <visual name='rear_right_caster_visual'>
+      <origin xyz="-0.9 -0.35 -0.05" rpy=" 0 0 0"/>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </visual>
+    
   </link>
 
 </robot>
