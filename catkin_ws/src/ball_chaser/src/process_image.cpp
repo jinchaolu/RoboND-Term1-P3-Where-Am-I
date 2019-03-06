@@ -141,8 +141,8 @@ void process_image_callback(const sensor_msgs::Image img)
 
         // Calculate the average offset (from -step/2.0 to +step/2.0)
         // Normalize the average offset (from -1.0 to 1.0)
-        // Multiply with -0.5 to turn
-        z = -0.5 * offset_accumulated / count_total / (step /2.0);
+        // Multiply with magic number -4.0 to turn
+        z = -4.0 * offset_accumulated / count_total / (step /2.0);
     }
     
     // Send request to service
