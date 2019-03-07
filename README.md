@@ -1,2 +1,2 @@
-# RoboND-Term1-P2-Go-Chase-It
-Project 2 of Udacity Robotics Software Engineer Nanodegree Program
+# RoboND-Term1-P3-Where-Am-I
+Project 3 of Udacity Robotics Software Engineer Nanodegree Program
