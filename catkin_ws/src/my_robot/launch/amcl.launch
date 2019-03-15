@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <!-- TODO: Add nodes here -->
 
@@ -18,6 +19,23 @@
     <!-- If you choose to define initial pose here -->
     <param name="initial_pose_x" value="0"/>
     <param name="initial_pose_y" value="0"/>
+    
+    <!-- Tune parameters-->
+    <param name="min_particles" value="100"/>
+    <param name="max_particles" value="2000"/>
+    <param name="update_min_a" value="pi/6.0"/>
+    <param name="update_min_d" value="0.1"/>
+    <param name="laser_min_range" value="0.5"/>
+    <param name="laser_max_range" value="10"/>
+    <param name="laser_max_beams" value="30"/>
+    <param name="laser_z_hit" value="0.95"/>
+    <param name="laser_z_rand" value="0.05"/>
+    <param name="odom_model_type" value="diff-corrected"/>
+    <param name="odom_alpha1" value="0.2"/>
+    <param name="odom_alpha2" value="0.2"/>
+    <param name="odom_alpha3" value="0.2"/>
+    <param name="odom_alpha4" value="0.2"/>
+    <param name="odom_alpha5" value="0.2"/>
   </node>
 
   <!-- Move Base -->
