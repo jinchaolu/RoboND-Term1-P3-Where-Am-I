@@ -1,4 +1,4 @@
-image: myoffice
+image: myoffice.pgm
 resolution: 0.01
 origin: [-20.0, -20.0, 0.0]
 occupied_thresh: 0.65
