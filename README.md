@@ -130,32 +130,28 @@ rosrun rqt_image_view rqt_image_view
 ```  
 
 ## Tips  
-[TODO]
 1. It's recommended to update and upgrade your environment before running the code.  
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
 ## Code Style  
-[TODO]
 Please (do your best to) stick to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html).
 
 ## Project Rubric  
-[TODO]
 ### 1. Basic Requirements  
-#### 1.1 Does the submission include the my_robot and the ball_chaser ROS packages?  
-Yes, it does.  
-### 1.2 Do these packages follow the directory structure detailed in the project description section?
-Yes, it does.  
-### 2. Robot Design
-#### 2.1 Does the submission include a design for a differential drive robot, using the Unified Robot Description Format?  
-Yes, it does.  
-### 3. Gazebo World  
-#### 3.1 Does the my_robot ROS package contain the Gazebo world?  
-Yes, it does.  
-### 4. Ball Chasing  
-#### 4.1 Does the ball_chaser ROS package contain two C++ ROS nodes to interact with the robot and make it chase a white-colored ball?  
-Yes, it does.  
-### 5. Launch Files  
-#### 5.1 Does the submission include world.launch and ball_chaser.launch files that launch all the nodes in this project?  
-Yes, it does.  
+#### 1.1 Did the student submit all required files?  
+Yes, he did.   
+### 2. Simulation Setup
+#### 2.1 Did the student set up the simulation environment properly?  
+Yes, he did.  
+#### 2.2 Is the student's simulation setup suitable for the localization task?  
+Yes, it is.  
+### 3. Localization Setup  
+#### 3.1 Did the student correctly build the launch files for localization?  
+Yes, he did.  
+#### 3.2 Did the student properly set the parameters for localization?  
+Yes, he did.  
+### 4. Localization Performance  
+#### 4.1 Is the student's robot able to localize itself?  
+Yes, it is.  
