@@ -150,7 +150,9 @@ You could control your robot by keyboard commands now.
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
 ```
-2. When you see this error:  
+2. You might need to generate the map again because of the size.  
+Please refer to [Map_Setup.md]  (./Map_Setup.md) to generate your map step-by-step.  
+3. When you see this error:  
 [request_publisher-2] process has died [pid 7531, exit code -6, cmd /home/nvidia/Documents/github/RoboND-Term1-P3-Where-Am-I/catkin_ws/devel/lib/pgm_map_creator/request_publisher (-30,30)(30,30)(30,-30)(-30,-30) 5 0.01 /home/nvidia/Documents/github/RoboND-Term1-P3-Where-Am-I/catkin_ws/src/pgm_map_creator/maps/map __name:=request_publisher __log:=/home/nvidia/.ros/log/21ee11ca-411f-11e9-9258-00044bc5f185/request_publisher-2.log].
 log file: /home/nvidia/.ros/log/21ee11ca-411f-11e9-9258-00044bc5f185/request_publisher-2*.log
 
@@ -159,7 +161,6 @@ http://answers.gazebosim.org/question/8928/protobuf-error-for-custom-messages-tr
 
 Then catkin_make  
 Then source  
-3. You might need to generate the map again because of the size.  
 4. Got an error when launching amcl.launch  
 check the amcl.launch file that you have correctly mapped the topics to the correct published ones  
 <remap to="scan" from="my_robot/laser/scan"/>  
