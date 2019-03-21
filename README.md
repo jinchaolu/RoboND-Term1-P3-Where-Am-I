@@ -16,9 +16,20 @@ In this project you'll create two ROS packages inside your `catkin_ws/src`: the 
 * Write a `process_image` C++ node that reads your robot’s camera image, analyzes it to determine the presence and position of a white ball. If a white ball exists in the image, your node should request a service via a client to drive the robot towards it.
 * The `ball_chaser.launch` should run both the `drive_bot` and the `process_image` nodes.  
 ## Prerequisites/Dependencies  
-[TODO]
 * Gazebo >= 7.0  
 * ROS Kinetic  
+* ROS map_server package  
+```
+sudo apt-get install ros-kinetic-map-server
+```
+* ROS amcl package  
+```
+sudo apt-get install ros-kinetic-amcl
+```
+* ROS move_base package  
+```
+sudo apt-get install ros-kinetic-move-base
+```
 * make >= 4.1(mac, linux), 3.81(Windows)
   * Linux: make is installed by default on most Linux distros
   * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
@@ -28,7 +39,6 @@ In this project you'll create two ROS packages inside your `catkin_ws/src`: the 
   * Mac: same deal as make - [install Xcode command line tools]((https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 ## Setup Instructions (abbreviated)  
-[TODO]
 1. Meet the `Prerequisites/Dependencies`  
 2. Open Ubuntu Bash and clone the project repository  
 3. On the command line execute  
@@ -101,39 +111,60 @@ Directory Structure
 - [my_robot.xacro](/catkin_ws/src/my_robot/urdf/my_robot.xacro): Define my_robot URDF model.  
 
 ## Run the project  
-[TODO]
 * Clone this repository
+```
+git clone https://github.com/jinchaolu/RoboND-Term1-P3-Where-Am-I.git
+```
 * Open the repository and make  
 ```
-cd /home/workspace/RoboND-Term1-P2-Go-Chase-It/catkin_ws/
+cd /home/workspace/RoboND-Term1-P3-Where-Am-I/catkin_ws/
 catkin_make
 ```
-* Launch my_robot/my_gokart in Gazebo to load both the world and plugins  
+* Launch my_robot in Gazebo to load both the world and plugins  
 ```
 roslaunch my_robot world.launch
 ```  
-or  
+* Launch amcl node  
 ```
-roslaunch my_gokart world.launch
+roslaunch my_robot amcl.launch
 ```  
-* Launch ball_chaser and process_image nodes  
+* Testing  
+You have two options to control your robot while it localize itself here:  
+- Send navigation goal via RViz  
+- Send move command via teleop package.  
+Navigate your robot, observe its performance and tune your parameters for AMCL.  
+
+**Option 1: Send `2D Navigation Goal`**  
+Your first option would be sending a `2D Nav Goal` from RViz. The `move_base` will try to navigate your robot based on the localization. Based on the new observation and the odometry, the robot to further perform the localization.  
+Click the `2D Nav Goal` button in the toolbar, then click and drag on the map to send the goal to the robot. It will start moving and localize itself in the process. If you would like to give `amcl` node a nudge, you could give the robot an initial position estimate on the map using `2D Pose Estimate`.  
+**Option 2: Use `teleop` Node**  
+You could also use teleop node to control your robot and observe it localize itself in the environment.  
+Open another terminal and launch the `teleop` script:  
 ```
-cd /home/workspace/RoboND-Term1-P2-Go-Chase-It/catkin_ws/
-source devel/setup.bash
-roslaunch ball_chaser ball_chaser.launch
-```  
-* Visualize  
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
-cd /home/workspace/RoboND-Term1-P2-Go-Chase-It/catkin_ws/
-source devel/setup.bash
-rosrun rqt_image_view rqt_image_view  
-```  
+You could control your robot by keyboard commands now.  
 
 ## Tips  
 1. It's recommended to update and upgrade your environment before running the code.  
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
 ```
+2. You might need to generate the map again because of the size.  
+Please refer to [Map_Setup.md]  (./Map_Setup.md) to generate your map step-by-step.  
+3. When you see this error:  
+[request_publisher-2] process has died [pid 7531, exit code -6, cmd /home/nvidia/Documents/github/RoboND-Term1-P3-Where-Am-I/catkin_ws/devel/lib/pgm_map_creator/request_publisher (-30,30)(30,30)(30,-30)(-30,-30) 5 0.01 /home/nvidia/Documents/github/RoboND-Term1-P3-Where-Am-I/catkin_ws/src/pgm_map_creator/maps/map __name:=request_publisher __log:=/home/nvidia/.ros/log/21ee11ca-411f-11e9-9258-00044bc5f185/request_publisher-2.log].
+log file: /home/nvidia/.ros/log/21ee11ca-411f-11e9-9258-00044bc5f185/request_publisher-2*.log
+
+Please refer to this link to fix it,  
+http://answers.gazebosim.org/question/8928/protobuf-error-for-custom-messages-transport-tutorial/  
+
+Then catkin_make  
+Then source  
+4. Got an error when launching amcl.launch  
+check the amcl.launch file that you have correctly mapped the topics to the correct published ones  
+<remap to="scan" from="my_robot/laser/scan"/>  
+Figure out amcl node is subscribing which topic? Then do the correct remapping.  
 
 ## Code Style  
 Please (do your best to) stick to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html).
