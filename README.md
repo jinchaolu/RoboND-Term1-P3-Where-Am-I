@@ -47,10 +47,9 @@ sudo apt-get update && sudo apt-get upgrade -y
 ```
 4. Build and run your code.  
 ## Project Description  
-[TODO]
 Directory Structure  
 ```
-.Go-Chase-It                                   # Go Chase It Project
+.Where-Am-I                                    # Where Am I Project
 ├── catkin_ws                                  # Catkin workspace
 │   ├── src
 │   │   ├── ball_chaser                        # ball_chaser package        
@@ -76,11 +75,22 @@ Directory Structure
 │   │   │   ├── CMakeLists.txt                 # compiler instructions
 │   │   │   ├── package.xml                    # package info
 │   │   ├── my_robot                           # my_robot package        
+│   │   │   ├── config                         # config folder for configuration files   
+│   │   │   │   ├── base_local_planner_params.yaml
+│   │   │   │   ├── costmap_common_params.yaml
+│   │   │   │   ├── global_costmap_params.yaml
+│   │   │   │   ├── local_costmap_params.yaml
 │   │   │   ├── launch                         # launch folder for launch files   
+│   │   │   │   ├── amcl.launch
 │   │   │   │   ├── robot_description.launch
 │   │   │   │   ├── world.launch
+│   │   │   ├── maps                           # maps folder for maps
+│   │   │   │   ├── myoffice.pgm
+│   │   │   │   ├── myoffice.yaml
 │   │   │   ├── meshes                         # meshes folder for sensors
 │   │   │   │   ├── hokuyo.dae
+│   │   │   ├── rviz                           # rviz folder for rviz configuration files
+│   │   │   │   ├── default.rviz
 │   │   │   ├── urdf                           # urdf folder for xarco files
 │   │   │   │   ├── my_robot.gazebo
 │   │   │   │   ├── my_robot.xacro
@@ -89,13 +99,44 @@ Directory Structure
 │   │   │   │   ├── myoffice.world
 │   │   │   ├── CMakeLists.txt                 # compiler instructions
 │   │   │   ├── package.xml                    # package info
+│   │   ├── pgm_map_creator                    # pgm_map_creator        
+│   │   │   ├── launch                         # launch folder for launch files   
+│   │   │   │   ├── request_publisher.launch
+│   │   │   ├── maps                           # maps folder for generated maps
+│   │   │   │   ├── Backup_map.pgm
+│   │   │   │   ├── map.pgm
+│   │   │   ├── msgs                           # msgs folder for communication files
+│   │   │   │   ├── CMakeLists.txt
+│   │   │   │   ├── collision_map_request.proto
+│   │   │   ├── src                            # src folder for main function
+│   │   │   │   ├── collision_map_creator.cc
+│   │   │   │   ├── request_publisher.cc
+│   │   │   ├── world                          # world folder for world files
+│   │   │   │   ├── myoffice.world
+│   │   │   │   ├── udacity_mtv
+│   │   │   ├── CMakeLists.txt                 # compiler instructions
+│   │   │   ├── LICENSE                        # License for repository
+│   │   │   ├── README.md                      # README for documentation
+│   │   │   ├── package.xml                    # package info
+│   │   ├── teleop_twist_keyboard              # teleop_twist_keyboard
+│   │   │   ├── CHANGELOG.rst                  # change log
+│   │   │   ├── CMakeLists.txt                 # compiler instructions
+│   │   │   ├── README.md                      # README for documentation
+│   │   │   ├── package.xml                    # package info
+│   │   │   ├── teleop_twist_keyboard.py       # keyboard controller
 ├── my_ball                                    # Model files 
 │   ├── model.config
 │   ├── model.sdf
 ├── videos                                     # Video files
-│   ├── Term1-Project2-Go-Chase-It-Demo.gif    # Demo video
+│   ├── Term1-Project3-Where-Am-I-Demo_1.gif   # Demo video
+│   ├── Term1-Project3-Where-Am-I-Demo_2.gif   # Demo video
+│   ├── Term1-Project3-Where-Am-I-Demo_3.gif   # Demo video
+│   ├── Term1-Project3-Where-Am-I-Demo_4.gif   # Demo video
 ```
-- [Term1-Project2-Go-Chase-It-Demo.gif](/videos/Term1-Project2-Go-Chase-It-Demo.gif): A demo video for successful run.  
+- [Term1-Project3-Where-Am-I-Demo_1.gif](/videos/Term1-Project3-Where-Am-I-Demo_1.gif): A demo video for failure run.  
+- [Term1-Project3-Where-Am-I-Demo_2.gif](/videos/Term1-Project3-Where-Am-I-Demo_2.gif): A demo video for successful run.  
+- [Term1-Project3-Where-Am-I-Demo_3.gif](/videos/Term1-Project3-Where-Am-I-Demo_3.gif): A demo video for successful run.  
+- [Term1-Project3-Where-Am-I-Demo_4.gif](/videos/Term1-Project3-Where-Am-I-Demo_4.gif): A demo video for successful run.  
 - [drive_bot.cpp](/catkin_ws/src/ball_chaser/src/drive_bot.cpp): ROS service C++ script, command the robot with specify speeds.  
 - [process_images.cpp](/catkin_ws/src/ball_chaser/src/process_images.cpp): ROS service C++ script, process the camera image and return requested speeds.  
 - [gokart_description.launch](/catkin_ws/src/my_gokart/launch/gokart_description.launch): Create gokart model in Gazebo world.  
@@ -109,6 +150,11 @@ Directory Structure
 - [hokuyo.dae](/catkin_ws/src/my_robot/meshes/hokuyo.dae): Hokuyo LiDAR sensor mesh model.  
 - [my_robot.gazebo](/catkin_ws/src/my_robot/urdf/my_robot.gazebo): Define my_robot URDF model plugins.  
 - [my_robot.xacro](/catkin_ws/src/my_robot/urdf/my_robot.xacro): Define my_robot URDF model.  
+- [amcl.launch](/catkin_ws/src/my_robot/launch/amcl.launch): Launch AMCL node
+- [myoffice.pgm](/catkin_ws/src/my_robot/maps/myoffice.pgm): Generated myoffice map
+- [myoffice.yaml](/catkin_ws/src/my_robot/maps/myoffice.yaml): Info for myoffice map
+- [default.rviz](/catkin_ws/src/my_robot/rviz/default.rviz): Default rviz
+- [map.pgm](/catkin_ws/src/pgm_map_creator/maps/map.pgm): Generated myoffice map
 
 ## Run the project  
 * Clone this repository
@@ -130,8 +176,8 @@ roslaunch my_robot amcl.launch
 ```  
 * Testing  
 You have two options to control your robot while it localize itself here:  
-- Send navigation goal via RViz  
-- Send move command via teleop package.  
+  * Send navigation goal via RViz  
+  * Send move command via teleop package.  
 Navigate your robot, observe its performance and tune your parameters for AMCL.  
 
 **Option 1: Send `2D Navigation Goal`**  
@@ -151,7 +197,7 @@ You could control your robot by keyboard commands now.
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 2. You might need to generate the map again because of the size.  
-Please refer to [Map_Setup.md]  (./Map_Setup.md) to generate your map step-by-step.  
+Please refer to [Map_Setup.md](/Map_Setup.md) to generate your map step-by-step.  
 3. When you see this error:  
 [request_publisher-2] process has died [pid 7531, exit code -6, cmd /home/nvidia/Documents/github/RoboND-Term1-P3-Where-Am-I/catkin_ws/devel/lib/pgm_map_creator/request_publisher (-30,30)(30,30)(30,-30)(-30,-30) 5 0.01 /home/nvidia/Documents/github/RoboND-Term1-P3-Where-Am-I/catkin_ws/src/pgm_map_creator/maps/map __name:=request_publisher __log:=/home/nvidia/.ros/log/21ee11ca-411f-11e9-9258-00044bc5f185/request_publisher-2.log].
 log file: /home/nvidia/.ros/log/21ee11ca-411f-11e9-9258-00044bc5f185/request_publisher-2*.log
@@ -159,8 +205,8 @@ log file: /home/nvidia/.ros/log/21ee11ca-411f-11e9-9258-00044bc5f185/request_pub
 Please refer to this link to fix it,  
 http://answers.gazebosim.org/question/8928/protobuf-error-for-custom-messages-transport-tutorial/  
 
-Then catkin_make  
-Then source  
+Then `catkin_make`  
+Then `source`  
 4. Got an error when launching amcl.launch  
 check the amcl.launch file that you have correctly mapped the topics to the correct published ones  
 <remap to="scan" from="my_robot/laser/scan"/>  
