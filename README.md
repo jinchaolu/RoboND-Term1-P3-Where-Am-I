@@ -3,9 +3,9 @@ Project 3 of Udacity Robotics Software Engineer Nanodegree Program
 ![Overview](/videos/Term1-Project3-Where-Am-I-Demo_2.gif)  
 ## Overview  
 In this project you'll utilize ROS AMCL package to accurately localize a mobile robot inside a map in the Gazebo simulation environments. Here are the steps to learn several aspects of robotic software engineering with a focus on ROS:  
-* Create a ROS package that launches a custom robot model in a custom Gazebo world
-* Utilize the ROS AMCL package and the Tele-Operation / Navigation Stack to localize the robot
-* Explore, add, and tune specific parameters corresponding to each package to achieve the best possible localization results
+* Create a ROS package that launches a custom robot model in a custom Gazebo world  
+* Utilize the ROS AMCL package and the Tele-Operation / Navigation Stack to localize the robot  
+* Explore, add, and tune specific parameters corresponding to each package to achieve the best possible localization results  
 ## Prerequisites/Dependencies  
 * Gazebo >= 7.0  
 * ROS Kinetic  
@@ -227,3 +227,13 @@ Yes, he did.
 ### 4. Localization Performance  
 #### 4.1 Is the student's robot able to localize itself?  
 Yes, it is.  
+
+## Videos  
+Too small particles will result into a localization failure.  
+![Demo_1](/videos/Term1-Project3-Where-Am-I-Demo_1.gif)  
+Good run demo 1.  
+![Demo_2](/videos/Term1-Project3-Where-Am-I-Demo_2.gif)  
+Good run demo 2.  
+![Demo_3](/videos/Term1-Project3-Where-Am-I-Demo_3.gif)  
+Good run demo 3.  
+![Demo_4](/videos/Term1-Project3-Where-Am-I-Demo_4.gif)  
