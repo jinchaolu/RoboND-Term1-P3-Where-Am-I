@@ -1,34 +1,29 @@
 # RoboND-Term1-P3-Where-Am-I
 Project 3 of Udacity Robotics Software Engineer Nanodegree Program
-![Overview](/videos/Term1-Project2-Go-Chase-It-Demo.gif)  
+![Overview](/videos/Term1-Project3-Where-Am-I-Demo_2.gif)  
 ## Overview  
-[TODO]
-In this project you'll create two ROS packages inside your `catkin_ws/src`: the `drive_bot` and the `ball_chaser` which will be used in Gazebo for all your upcoming projects in the [Udacity Robotics Software Engineer Nanodegree Program](https://www.udacity.com/course/robotics-software-engineer--nd209). Here are the steps to design the robot, house it inside your world, and program it to chase white-colored balls:  
-1. `drive_bot`:  
-* Create a `my_robot` ROS package to hold your robot, the white ball, and the world.
-* Design a differential drive robot with the Unified Robot Description Format. Add two sensors to your robot: a lidar and a camera. Add Gazebo plugins for your robot’s differential drive, lidar, and camera. The robot you design should be significantly different from the one presented in the project lesson. Implement significant changes such as adjusting the color, wheel radius, and chassis dimensions. Or completely redesign the robot model! After all you want to impress your future employers :-D
-* House your robot inside the world you built in the **Build My World** project.
-* Add a white-colored ball to your Gazebo world and save a new copy of this world.
-* The `world.launch` file should launch your world with the white-colored ball and your robot.
-2. `ball_chaser`:
-* Create a `ball_chaser` ROS package to hold your C++ nodes.
-* Write a `drive_bot` C++ node that will provide a `ball_chaser/command_robot` service to drive the robot by controlling its linear x and angular z velocities. The service should publish to the wheel joints and return back the requested velocities.
-* Write a `process_image` C++ node that reads your robot’s camera image, analyzes it to determine the presence and position of a white ball. If a white ball exists in the image, your node should request a service via a client to drive the robot towards it.
-* The `ball_chaser.launch` should run both the `drive_bot` and the `process_image` nodes.  
+In this project you'll utilize ROS AMCL package to accurately localize a mobile robot inside a map in the Gazebo simulation environments. Here are the steps to learn several aspects of robotic software engineering with a focus on ROS:  
+* Create a ROS package that launches a custom robot model in a custom Gazebo world
+* Utilize the ROS AMCL package and the Tele-Operation / Navigation Stack to localize the robot
+* Explore, add, and tune specific parameters corresponding to each package to achieve the best possible localization results
 ## Prerequisites/Dependencies  
 * Gazebo >= 7.0  
 * ROS Kinetic  
+* ROS navigation package  
+```
+sudo apt-get install ros-kinetic-navigation
+```
 * ROS map_server package  
 ```
 sudo apt-get install ros-kinetic-map-server
 ```
-* ROS amcl package  
-```
-sudo apt-get install ros-kinetic-amcl
-```
 * ROS move_base package  
 ```
 sudo apt-get install ros-kinetic-move-base
+```
+* ROS amcl package  
+```
+sudo apt-get install ros-kinetic-amcl
 ```
 * make >= 4.1(mac, linux), 3.81(Windows)
   * Linux: make is installed by default on most Linux distros
