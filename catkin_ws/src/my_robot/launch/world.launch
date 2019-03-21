@@ -33,6 +33,6 @@
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
   <!--launch rviz-->
-  <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d /home/nvidia/Documents/github/RoboND-Term1-P3-Where-Am-I/catkin_ws/src/my_robot/rviz/default.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find my_robot)/rviz/default.rviz"/>
 
 </launch>
