@@ -31,7 +31,7 @@ sudo apt-get install ros-kinetic-amcl
   * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
 * gcc/g++ >= 5.4
   * Linux: gcc / g++ is installed by default on most Linux distros
-  * Mac: same deal as make - [install Xcode command line tools]((https://developer.apple.com/xcode/features/)
+  * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 ## Setup Instructions (abbreviated)  
 1. Meet the `Prerequisites/Dependencies`  
@@ -229,7 +229,7 @@ Yes, he did.
 Yes, it is.  
 
 ## Videos  
-Too small particles will result into a localization failure.  
+Too few particles will result into localization failure.  
 ![Demo_1](/videos/Term1-Project3-Where-Am-I-Demo_1.gif)  
 Good run demo 1.  
 ![Demo_2](/videos/Term1-Project3-Where-Am-I-Demo_2.gif)  
