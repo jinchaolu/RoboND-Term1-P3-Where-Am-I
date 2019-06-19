@@ -204,7 +204,9 @@ Then `catkin_make`
 Then `source`  
 4. Got an error when launching amcl.launch  
 check the amcl.launch file that you have correctly mapped the topics to the correct published ones  
+```
 <remap to="scan" from="my_robot/laser/scan"/>  
+```
 Figure out amcl node is subscribing which topic? Then do the correct remapping.  
 
 ## Code Style  
